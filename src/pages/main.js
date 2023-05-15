@@ -3,8 +3,8 @@ import { Keyboard, ActivityIndicator, ImageBackground, View } from 'react-native
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import api from '../services/api';
-const image = {uri: 'https://i.pinimg.com/564x/ca/f8/9e/caf89ec7174e6533afd8ee7b5acd8a7c.jpg'};
-import { Container, Form, Input, SubmitButton, List, User, Avatar, Name, Bio, ProfileButton, ProfileButtonText } from './styles';
+const image = {uri: 'https://i.pinimg.com/564x/f9/1b/2a/f91b2a49e67e3c1be9e71e822f9144a4.jpg'};
+import { Container, Form, Input, SubmitButton, List, User, Avatar, Name, Bio, Description, ProfileButton, ProfileButtonText } from './styles';
 
 export default class Main extends Component {
 
@@ -41,41 +41,50 @@ export default class Main extends Component {
 
     this.setState({ loading: true });
 
-    const response = await api.get(`https://rickandmortyapi.com/api/character/?name=${newCard}`);
-    for (let i = 0; i <= response.data.info.count; i++){
-      if (!response.data.results[i]?.name && response.data.info.next){
-        //response = await api.get(response.data.info.next);
-        //console.log('entrou', response.data.info)
-        continue
-      } 
-      const data = {
-        id: response.data.results[i].id,
-        name: response.data.results[i].name,
-        species: response.data.results[i].species,
-        gender: response.data.results[i].gender,
-        avatar: response.data.results[i].image,
-        type: response.data.results[i].type,
-        episode: response.data.results[i].episode
-      };
-      cards.push(data)
-    }
-    //const response = await api.get(`api/character/?name=${newCard}`);
-    // const data = {
-    //   name: name,
-    //   species: response.data.species,
-    //   gender: response.data.gender,
-    //   avatar: img,
-    //   type: response.data.type,
-    //   episode: response.data.episode
-    // };
+    try {
+      const response = await api.get(`https://rickandmortyapi.com/api/character/?name=${newCard}`);
+      this.setState({ loading: false });
+      for (let i = 0; i <= response.data.info.count; i++){
+        if (!response.data.results[i]?.name && response.data.info.next){
+          //response = await api.get(response.data.info.next);
+          //console.log('entrou', response.data.info)
+          continue
+        } 
+        const episode = await api.get(response.data.results[i].episode[0]);
+        const location = await api.get(response.data.results[i].location.url);
+        const data = {
+          id: response.data.results[i].id,
+          name: response.data.results[i].name,
+          species: response.data.results[i].species,
+          avatar: response.data.results[i].image,
+          status: response.data.results[i].status,
+          episode: episode.data.name,
+          location: location.data.name
+        };
+        cards.push(data)
+      }
 
-    this.setState({
-      cards: cards,
-      newCard: '',
-      loading: false,
-    });
+      //const response = await api.get(`api/character/?name=${newCard}`);
+      // const data = {
+        //   name: name,
+        //   species: response.data.species,
+        //   gender: response.data.gender,
+        //   avatar: img,
+        //   type: response.data.type,
+        //   episode: response.data.episode
+        // };
+        
+        this.setState({
+          cards: cards,
+          newCard: '',
+          loading: false,
+        });
+  } catch (error) {
+    this.setState({ loading: false });
+  }
 
     Keyboard.dismiss();
+
   };
 
   
@@ -113,9 +122,11 @@ export default class Main extends Component {
               <Avatar source={{ uri: item.avatar }} />
               <View style={{marginLeft: 10}}>
               <Name>{item.name}</Name>
-              <Bio>{item.species}</Bio>
-              <Bio>{item.gender}</Bio>
-              <Bio>{item.type}</Bio>
+              <Bio>{item.species} - {item.status}</Bio>
+              <Description>Visto por último em:</Description>
+              <Bio>{item.episode}</Bio>
+              <Description>Apareceu primeiro no episódio:</Description>
+              <Bio>{item.location}</Bio>
               </View>
               </View>
 

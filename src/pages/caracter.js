@@ -27,26 +27,13 @@ export default class Caracter extends Component {
                 justifyContent: 'center'}}>
 
                 <Header>
-                    <Avatarperfil source={{ uri: caracter.avatar }} />
                     <Nameperfil>{caracter.name}</Nameperfil>
-                    <Bioperfil>{caracter.gender}</Bioperfil>
                     <Bioperfil>{caracter.species}</Bioperfil>
-                    <Bioperfil>{caracter.type}</Bioperfil>
+                    <Bioperfil>Location: {caracter.location}</Bioperfil>
+                    <Bioperfil>Episode: {caracter.episode}</Bioperfil>
+                    <Avatarperfil source={{ uri: caracter.avatar }} />
                 </Header>
-
-                {/* <Stars
-                    data={stars}
-                    //keyExtractor={(star) => String(star.id)}
-                    renderItem={({ item }) => (
-                        <Starred>
-                            <OwnerAvatar source={{ uri: item.owner.avatar_url }} />
-                            <Info>
-                                <Title>{item.name}</Title>
-                                <Author>{item.owner.login}</Author>
-                            </Info>
-                        </Starred>
-                    )}
-                />   */}
+                <Header></Header>
                 </ImageBackground>
             </Container>
         );

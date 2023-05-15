@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { Component, useState } from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, ImageBackground } from "react-native";
-const image = {uri: 'https://i.pinimg.com/564x/f9/1b/2a/f91b2a49e67e3c1be9e71e822f9144a4.jpg'};
+const image = {uri: 'https://i.pinimg.com/564x/ca/f8/9e/caf89ec7174e6533afd8ee7b5acd8a7c.jpg'};
 
 const Login = () => {
    const navigation = useNavigation(); 
@@ -28,12 +28,14 @@ const Login = () => {
           <TextInput
           style = {styles.input}
           placeholder = 'E-mail'
+          placeholderTextColor={'#e6e381'}
           value= {email}
           onChangeText={setEmail}
           />
            <TextInput
           style = {styles.input}
           placeholder = 'Password'
+          placeholderTextColor={'#e6e381'}
           secureTextEntry={true}
           value= {password}
           onChangeText={setPassword}

@@ -62,9 +62,7 @@ export const Bio = styled.Text.attrs({
     numberOfLines: 2,
 })`
     font-size: 13px;
-    line-height: 18px;
     color: #999;
-    margin-top: 5px;
 
 `;
 
@@ -91,15 +89,6 @@ export const Stars = styled.FlatList.attrs({
     margin-top: 20px;
 `;
 
-export const Starred = styled.View`
-    background: #f5f5f5;
-    border-radius: 4px;
-    padding: 10px 15px;
-    margin-bottom: 20px;
-    flex-direction: row;
-    align-items: center;
-`;
-
 export const OwnerAvatar = styled.Image`
     width: 42px;
     height: 42px;
@@ -120,14 +109,8 @@ export const Title = styled.Text.attrs({
     color: #333;
 `;
 
-export const Author = styled.Text`
-    font-size: 13px;
-    color: #667;
-    margin-top: 2px;
-`;
-
-export const Header = styled.View`
-    padding-top: 15px;
+export const Header = styled.View` 
+    height: 50%;
     align-items: center;
     justify-content: center;
 `;
@@ -140,17 +123,21 @@ export const Avatarperfil = styled.Image`
 `;
 
 export const Nameperfil = styled.Text`
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-    margin-top: 4px;
+    font-size: 36px;
+    color: #fff;
     text-align: center;
+    font-weigth: bolder
+
+`;
+
+export const Description = styled.Text`
+    font-size: 12px;
+    color: #e6e381;
 `;
 
 export const Bioperfil = styled.Text`
     font-size: 15px;
-    line-height: 18px;
-    color: #fff;
-    margin-top: 5px;
+    color: #e6e381;
     text-align: center;
+    font-weigth: bolder
 `;

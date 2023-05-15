@@ -47,7 +47,7 @@ export default function Routes() {
           }
         }}/>
         <Stack.Screen name='caracter' component={Caracter} options={{
-          title: 'Perfil do Usuário',
+          title: 'Olha isso Morty!!',
           headerTitleAlign: 'center',
           headerTintColor: 'black',
           headerStyle: {
