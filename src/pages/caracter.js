@@ -1,25 +1,14 @@
 import React, { Component } from 'react';
 import api from '../services/api';
-import { Container, Header, Avatarperfil, Nameperfil, Bioperfil, Stars, Starred, OwnerAvatar, Info, Title, Author } from './styles';
+import { Container, Header, Avatarperfil, Nameperfil, Bioperfil } from './styles';
 import { ImageBackground } from 'react-native';
 const image = {uri: 'https://i.pinimg.com/originals/30/88/80/308880d6b87c33b9452fa064a332b359.jpg'}
+
 export default class Caracter extends Component {
-    // state = {
-    //     caracter: [],
-    // };
-
-    async componentDidMount(id) {
-        const { route } = this.props;
-        const { caracterId }  = route.params;
-        const response = await api.get(`/caracter/${caracterId}`);
-
-        this.setState({ caracter: response.data });
-    }
-
+    
     render() {
         const { route } = this.props;
         const { caracter } = route.params;
-        //const { caracter } = this.state;
 
         return (
             <Container>
@@ -28,7 +17,7 @@ export default class Caracter extends Component {
 
                 <Header>
                     <Nameperfil>{caracter.name}</Nameperfil>
-                    <Bioperfil>{caracter.species}</Bioperfil>
+                    <Bioperfil>{caracter.species} - {caracter.status}</Bioperfil>
                     <Bioperfil>Location: {caracter.location}</Bioperfil>
                     <Bioperfil>Episode: {caracter.episode}</Bioperfil>
                     <Avatarperfil source={{ uri: caracter.avatar }} />

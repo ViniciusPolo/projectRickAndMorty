@@ -13,7 +13,7 @@ export default function Routes() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="login" component={Login} options={{
-          title: 'Create Account',
+          title: 'Entre no RickAndMortyVerse',
           headerTitleAlign: 'center',
           headerStyle: {
             backgroundColor: '#82db1b',

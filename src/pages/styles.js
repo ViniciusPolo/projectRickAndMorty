@@ -18,10 +18,11 @@ export const Input = styled.TextInput.attrs({
 })`
     flex: 1;
     height: 40px;
-    background: #eee;
+    color: #e6e381; 
     border-radius: 4px;
     padding: 0 15px;
     border: 1px solid #eee;
+    margin: 2px;
 `;
 
 export const SubmitButton = styled(RectButton)`
@@ -67,13 +68,23 @@ export const Bio = styled.Text.attrs({
 `;
 
 export const ProfileButton = styled(RectButton)`
-    margin-top: 10px;
+    margin-top: 5px;
     align-self: stretch;
     border-radius: 5px;
     background: #82db1b;
     justify-content: center;
     align-items: center;
     height: 36px;
+`;
+
+export const ProfileButtonDelete = styled(RectButton)`
+    margin-top: 5px;
+    align-self: stretch;
+    border-radius: 5px;
+    background: #82db1b;
+    justify-content: center;
+    align-items: center;
+    height: 36px;   
 `;
 
 export const ProfileButtonText = styled.Text`
@@ -110,7 +121,7 @@ export const Title = styled.Text.attrs({
 `;
 
 export const Header = styled.View` 
-    height: 50%;
+    height: 40%;
     align-items: center;
     justify-content: center;
 `;
@@ -123,10 +134,9 @@ export const Avatarperfil = styled.Image`
 `;
 
 export const Nameperfil = styled.Text`
-    font-size: 36px;
+    font-size: 40px;
     color: #fff;
     text-align: center;
-    font-weigth: bolder
 
 `;
 
@@ -136,8 +146,7 @@ export const Description = styled.Text`
 `;
 
 export const Bioperfil = styled.Text`
-    font-size: 15px;
+    font-size: 20px;
     color: #e6e381;
     text-align: center;
-    font-weigth: bolder
 `;

@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import api from '../services/api';
 const image = {uri: 'https://i.pinimg.com/564x/f9/1b/2a/f91b2a49e67e3c1be9e71e822f9144a4.jpg'};
-import { Container, Form, Input, SubmitButton, List, User, Avatar, Name, Bio, Description, ProfileButton, ProfileButtonText } from './styles';
+import { Container, Form, Input, SubmitButton, List, User, Avatar, Name, Bio, Description, ProfileButton, ProfileButtonDelete, ProfileButtonText } from './styles';
 
 export default class Main extends Component {
 
@@ -22,11 +22,11 @@ export default class Main extends Component {
     }
   }
 
-  componentDidUpdate(_, prevState) {
+  async componentDidUpdate(_, prevState) {
     const { cards } = this.state;
 
     if (prevState.cards !== cards) {
-      AsyncStorage.setItem('cards', JSON.stringify(cards));
+      await AsyncStorage.setItem('cards', JSON.stringify(cards));
     }
   }
 
@@ -63,20 +63,9 @@ export default class Main extends Component {
         };
         cards.push(data)
       }
-
-      //const response = await api.get(`api/character/?name=${newCard}`);
-      // const data = {
-        //   name: name,
-        //   species: response.data.species,
-        //   gender: response.data.gender,
-        //   avatar: img,
-        //   type: response.data.type,
-        //   episode: response.data.episode
-        // };
         
         this.setState({
           cards: cards,
-          newCard: '',
           loading: false,
         });
   } catch (error) {
@@ -133,16 +122,16 @@ export default class Main extends Component {
               <ProfileButton onPress={() => {
                 this.props.navigation.navigate('caracter', {caracter: item});
               }}>
-                <ProfileButtonText>Mostra esse inútil</ProfileButtonText>
+                <ProfileButtonText>Mostre para o Morty</ProfileButtonText>
               </ProfileButton>
 
-              <ProfileButton onPress={() => { 
+              <ProfileButtonDelete onPress={() => { 
                 this.removeCard(cards.indexOf(item))
               }}
               style={{backgroundColor: '#e6e381'}}
               >
-                <ProfileButtonText>Desintegre Isso</ProfileButtonText>
-              </ProfileButton>
+                <ProfileButtonText><Icon name='delete' size={20} /></ProfileButtonText>
+              </ProfileButtonDelete>
 
 
             </User>

@@ -1,8 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { Component, useState } from "react";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, ImageBackground } from "react-native";
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, ImageBackground, Image} from "react-native";
 const image = {uri: 'https://i.pinimg.com/564x/ca/f8/9e/caf89ec7174e6533afd8ee7b5acd8a7c.jpg'};
-
 const Login = () => {
    const navigation = useNavigation(); 
 
@@ -23,8 +22,10 @@ const Login = () => {
       return (
         <ImageBackground source={image} resizeMode="cover" style={{flex: 1,
           justifyContent: 'center'}}>
-
         <View style={styles.container}>
+        <View >
+        <Image source={{uri:'https://logosmarcas.net/wp-content/uploads/2022/01/Rick-And-Morty-Logo.png'}} style={{width: 350, height: 200}}/>
+        </View>    
           <TextInput
           style = {styles.input}
           placeholder = 'E-mail'
@@ -41,10 +42,10 @@ const Login = () => {
           onChangeText={setPassword}
           />
           <TouchableOpacity style={styles.button} onPress={handleLogin}>
-            <Text style={styles.buttonText}>Sign-in</Text>
+            <Text style={styles.buttonText}>Atravesse o portal</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={handleCreate}>
-            <Text style={styles.buttonText}>Create Account</Text>
+            <Text style={styles.buttonText}>Pegue sua Arma de Portais</Text>
           </TouchableOpacity>
       </View>
           </ImageBackground>
@@ -75,8 +76,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   buttonText:{
-    color: 'lack',
-    fontWeight: 'bold'
+    color: 'black'
   }
 })
 
