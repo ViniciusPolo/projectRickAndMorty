@@ -79,7 +79,9 @@ export default class Main extends Component {
   
 
   render() {
-    const { cards, newCard, loading } = this.state;
+    let { cards, newCard, loading } = this.state;
+    const uniqueItems = [...new Map(cards.map(item => [item.id, item])).values()];
+    cards = uniqueItems
 
     return (
       <Container>
@@ -103,7 +105,7 @@ export default class Main extends Component {
         <List
           showVerticalScrollIndicator={false}
           data={cards}
-          keyExtractor={card => card.id}
+          keyExtractor={card => card.id.toString()}
           renderItem={( {item} ) => (
             <User>
                 
